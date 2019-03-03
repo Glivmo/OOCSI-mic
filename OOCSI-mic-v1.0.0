@@ -20,10 +20,7 @@
 
 //  -------------------------
 
-
 //ab-Exponential regression: y=AB^x = 32.6*1.00099^sensVal
-
-
 
 // OOCSI -------------------------
 
@@ -43,7 +40,6 @@ const char* hostserver = "oocsi.id.tue.nl";
 OOCSI oocsi = OOCSI();
 
 
-
 // SAMPLE ARRAY VARIABLES -------------------------
 
 //array to store the sensor values of the one second measurement
@@ -60,7 +56,6 @@ int actualMeasuredPointsMinutes = 60;
 
 //max value for each second
 int maxValue = 0;
-
 
 
 // DATA OUTPUT VARIABLES  -------------------------
@@ -82,7 +77,6 @@ int amplitudeAmbient = 0;
 int decibelAmbient = 0;
 
 
-
 // TIME RELATED VARIABES -------------------------
 int currentTime = 0;
 
@@ -91,9 +85,6 @@ int previousTimeSampleMinute = 0;
 
 int timeIntervalSampleSecond = 1000;
 int timeIntervalSampleMinute = 60000;
-
-
-
 
 
 void setup() {
@@ -105,11 +96,7 @@ void setup() {
   oocsi.setActivityLEDPin(LED_BUILTIN);
 
   oocsi.connect(OOCSIName, hostserver, ssid, password, processOOCSI);
-
 }
-
-
-
 
 
 void loop() {
@@ -137,8 +124,6 @@ void loop() {
         Serial.println("WARNING: array overwrite!");
       }
 
-
-
       //when one second has passed, the measured data point will be stored on the minute array for a new measurement
     } else {
       Serial.println("One second has passed.");
@@ -158,15 +143,11 @@ void loop() {
 
       Serial.println(" ");
 
-
-
       //storing the data point in the one minute array
       sampleMinuteArray[indexSampleMinute] = maxValue;
       indexSampleMinute++;
 
       Serial.println("maxValue is stored!");
-
-
 
       //wipe everything second related variabeles after one second for the new measurement
       maxValue = 0;
@@ -176,20 +157,15 @@ void loop() {
         sampleSecondArray[i] = 0;
       }
 
-
-
       Serial.println("every second sample variables are wiped. To the next index of the minute array!");
       Serial.print("new minute array index is: ");
       Serial.println(indexSampleMinute);
       Serial.println(" ------ ");
       Serial.println(" ");
 
-
       currentTime = millis(); //additional recalibration of time
       previousTimeSampleSecond = currentTime;
     }
-
-
 
 
     //when one minute has passed, summarize the 60 single second samples
@@ -213,7 +189,6 @@ void loop() {
     //wipe sumAllValues
     sumAllValues = 0;
 
-
     //calculating the max
     for (int i = 0; i < sampleMinuteSize; i++) {
 
@@ -227,9 +202,7 @@ void loop() {
     //    Serial.print("decibelTotalMax is: ");
     //    Serial.println(decibelTotalMax);
 
-
     //decibelAmbient pending. New array to be made for that feature.
-
 
 
     Serial.println("Sending to oocsi now!");
@@ -258,7 +231,6 @@ void loop() {
     delay(1000);
 
 
-
     //    Serial.print("timeStamp is: ");
     //    Serial.println(timeStamp);
     //
@@ -271,7 +243,6 @@ void loop() {
     //    Serial.print("dataMin is: ");
     //    Serial.println("0");
 
-
     //now wipe everything for recalibration of the module
     Serial.println("Wiping now!");
 
@@ -281,30 +252,22 @@ void loop() {
 
     indexSampleMinute = 0;
 
-
     for (int i = 0; i < sampleSecondSize; i++) {
       sampleSecondArray[i] = 0;
     }
 
     indexSampleSecond = 0;
 
-
     maxValue = 0;
-
 
     Serial.println(" ------ Message has been sent");
     Serial.println(" ");
 
-
     currentTime = millis(); //additional recalibration of time
-
     previousTimeSampleSecond = currentTime;
-
     previousTimeSampleMinute = currentTime;
-
   }
 }
-
 
 
 void processOOCSI() {
