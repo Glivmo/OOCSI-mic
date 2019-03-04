@@ -3,6 +3,7 @@
 Microphone module that measures the maximum decibel each second and summarize the measurements per minute. The summary consist of the average and the maximum.
 
 TU/e course of faculty of Industrial Design by Mathias Funk
+
 DBSU10 - Tyria Team 05
 
 ## How to use
