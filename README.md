@@ -18,7 +18,7 @@ Whenever data has been captured for the whole minute, all stored data within the
 
 **data transformation**
 
-Basic data analysis techniques will be applied on all values within the "sampleMinuteArray". For now the data analysis consist of "average" and "maximum". These results will be transformed into decibels through the modeled exponential regression formula. More information about this formula could be found in the [Circuitdigest blog post by Aswinth Raj](https://circuitdigest.com/microcontroller-projects/arduino-sound-level-measurement) about transforming Arduino microphone values into decibels.
+Basic data analysis techniques will be applied on all values within the "sampleMinuteArray". For now the data analysis consist of "average" and "maximum". These results will be transformed into decibels through the modeled exponential regression formula. More information about the decibel transformation process could be found in the [Circuitdigest blog post by Aswinth Raj](https://circuitdigest.com/microcontroller-projects/arduino-sound-level-measurement) about transforming Arduino microphone values into decibels.
 
 ## Sending data
 The data will be send to the database through OOCSI. Check out the [OOCSI-Database by Glivmo](https://github.com/Glivmo/OOCSI-Database) for more information about sending and receiving the data.
